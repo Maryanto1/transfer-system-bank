@@ -11,7 +11,7 @@ public class ProcessException extends RuntimeException implements Serializable {
     private String code;
     private String message;
 
-    ProcessException(String code, String message){
+    public ProcessException(String code, String message){
         super(message);
         this.code = code;
         this.message = message;
