@@ -1,14 +1,17 @@
 package id.co.com.transfer_system.dto;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
+
+import java.io.Serializable;
 
 @Builder
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class TransferInquiryBaseResponseDto {
+@Getter
+@Setter
+public class TransferInquiryBaseResponseDto implements Serializable {
+    private static final long serialVersionUID = -1788824277712679736L;
+
     private ResiConfirmTransferDto resi;
 }

@@ -33,4 +33,6 @@ public class PaymentTransferResDto {
     public boolean isSuccess(){
         return "00".equals(responseCode);
     }
+
 }
+

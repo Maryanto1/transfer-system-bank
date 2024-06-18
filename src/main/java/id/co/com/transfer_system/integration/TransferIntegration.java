@@ -13,6 +13,6 @@ public interface TransferIntegration {
     @PostMapping(value = "/posting",
             consumes = {MediaType.APPLICATION_JSON_VALUE},
             produces = {MediaType.APPLICATION_JSON_VALUE})
-    PaymentTransferResDto jurnalCasa(@RequestBody PaymentTransferReqDto req);
+    PaymentTransferResDto doPayment(@RequestBody PaymentTransferReqDto req);
 
 }

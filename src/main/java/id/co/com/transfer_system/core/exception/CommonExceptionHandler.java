@@ -1,7 +1,6 @@
 package id.co.com.transfer_system.core.exception;
 
 import feign.FeignException;
-import id.co.com.transfer_system.dto.BaseDto;
 import id.co.com.transfer_system.dto.BaseResponse;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
@@ -13,6 +12,20 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExcep
 @RestControllerAdvice
 @Slf4j
 public class CommonExceptionHandler extends ResponseEntityExceptionHandler {
+
+    @ExceptionHandler(InvalidSessionException.class)
+    public ResponseEntity<? extends BaseResponse> invalidSessException(InvalidSessionException e){
+        log.info("Exception is, message : {}", e.getMessage());
+        HttpStatus httpStatus = HttpStatus.UNAUTHORIZED;
+
+        ResponseEntity<?> responseEntity = new ResponseEntity<>(BaseResponse
+                .builder()
+                .code(e.getCode())
+                .message(e.getMessage())
+                .build(), httpStatus);
+        return (ResponseEntity<? extends BaseResponse>) responseEntity;
+
+    }
 
     @ExceptionHandler(ProcessException.class)
     public ResponseEntity<? extends BaseResponse> commonException(ProcessException e){

@@ -4,17 +4,23 @@ import id.co.com.transfer_system.core.filter.HttpRequestWrapper;
 import id.co.com.transfer_system.core.filter.HttpResponseWrapper;
 import id.co.com.transfer_system.util.ISTHttpUtil;
 import jakarta.servlet.*;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.core.annotation.Order;
 import org.springframework.http.HttpStatus;
+import org.springframework.stereotype.Component;
 import org.springframework.util.Base64Utils;
 
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 
+@Component
+@Order(1)
+@Slf4j
 public class CryptoFilter implements Filter {
 
     @Value("${is.encrypt:null}")
