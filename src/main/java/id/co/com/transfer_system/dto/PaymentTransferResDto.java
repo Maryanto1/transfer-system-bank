@@ -1,28 +1,27 @@
 package id.co.com.transfer_system.dto;
 
+import lombok.Builder;
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
+import java.io.Serializable;
 
 @Data
-public class PaymentTransferResDto {
-    private String processingCode;
-    private String pan;
+@Getter
+@Setter
+@Builder
+public class PaymentTransferResDto implements Serializable {
+    private static final long serialVersionUID = 2221512887557778928L;
+
     private String amount;
     private String transmissionDateTime;
     private String stan;
-    private String dateTime;
-    private String transTime;
-    private String channelId;
-    private String acqId;
-    private String fwdId;
     private String retrievalNumber;
     private String clientTerminalId;
-    private String caId;
-    private String locationName;
-    private String productCode;
-    private String currentYear;
     private String sourceAccount;
     private String destinationAccount;
     private String responseDescription;
+    private String destinationName;
     private String responseCode;
     private String privateReservedCore;
 

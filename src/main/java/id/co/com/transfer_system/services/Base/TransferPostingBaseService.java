@@ -2,6 +2,8 @@ package id.co.com.transfer_system.services.Base;
 
 import id.co.com.transfer_system.core.exception.ProcessException;
 import id.co.com.transfer_system.dto.BaseResponse;
+import id.co.com.transfer_system.dto.PaymentTransferResDto;
+import id.co.com.transfer_system.dto.TransferPostBaseResponseDto;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
@@ -13,11 +15,13 @@ public abstract class TransferPostingBaseService<R,T> {
 
     protected abstract void checkMpin() throws ProcessException;
 
-    protected abstract void doPayment()throws ProcessException;
+    protected abstract PaymentTransferResDto doPayment()throws ProcessException;
 
-    protected abstract T constructRespon(R request) throws ProcessException;
+    protected abstract void   saveTranhisInbox(PaymentTransferResDto resPayment) throws ProcessException;
 
-    public BaseResponse<T> executeInquiryTransfer(R requestBase) throws ProcessException {
+    protected abstract T constructRespon(PaymentTransferResDto request) throws ProcessException;
+
+    public BaseResponse<T> executePosting(R requestBase) throws ProcessException {
 
         var request = requestBase;
         //validated account
@@ -34,11 +38,11 @@ public abstract class TransferPostingBaseService<R,T> {
         log.debug("Cek Mpin End");
 
         log.debug("Do Payment");
-        doPayment();
+        PaymentTransferResDto resPayment =  doPayment();
         log.debug("Do Payment End");
 
         log.debug("Construct Respon begin");
-        var constructRespon = constructRespon((R) requestBase);
+        var constructRespon = constructRespon(resPayment);
         log.debug("Construct Respon end");
 
         //store to session
