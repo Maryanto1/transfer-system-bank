@@ -10,6 +10,7 @@ This application is packaged as a war which has Tomcat 8 embedded. No Tomcat or 
 2. Make sure you are using JDK 17 and Maven 3.8 or above
 3. Installing redis
 4. Installing postgresql
+5. Adjust application.properties file based on redis and postgresql credentials
 
 To see the documentation for using the api, you can access
 http://localhost:8080/swagger-ui/index.html#/transfer-controller/doInquiry
